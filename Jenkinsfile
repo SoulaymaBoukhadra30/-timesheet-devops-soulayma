@@ -17,23 +17,5 @@ pipeline {
             }
         }
 
-        stage('Build Project') {
-            steps {
-                // Compiler le projet Maven
-                sh 'mvn clean install'
-            }
         }
     }
-
-    post {
-        always {
-            echo 'Pipeline terminé.'
-        }
-        success {
-            echo 'Build réussi !'
-        }
-        failure {
-            echo 'Build échoué.'
-        }
-    }
-}
