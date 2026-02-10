@@ -2,24 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout GIT') {
+        stage('Checkout & Build') {
             steps {
-                echo 'Pulling...'
+                // Récupérer le code depuis Git
                 git branch: 'master',
                     url: 'https://github.com/SoulaymaBoukhadra30/-timesheet-devops-soulayma.git'
-            }
-        }
 
-        stage('Testing Maven') {
-            steps {
-                echo 'Checking Maven version...'
-                sh 'mvn -version'
-            }
-        }
-
-        stage('Build Maven') {
-            steps {
-                echo 'Building project...'
+                // Compiler le projet Maven
                 sh 'mvn clean install'
             }
         }
