@@ -7,9 +7,11 @@ pipeline {
                 // Récupérer le code depuis Git
                 git branch: 'master',
                     url: 'https://github.com/SoulaymaBoukhadra30/-timesheet-devops-soulayma.git'
-
-                // Compiler le projet Maven
-                sh 'mvn clean install'
+   }
+        }
+        stage('Testing maven') {
+            steps {
+                sh 'mvn -version'
             }
         }
     }
