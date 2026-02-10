@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'Pulling...';
                 git branch: 'master',
-                url: 'https://github.com/SoulaymaBoukhadra30/-timesheet-devops-soulayma';
+                url: 'https://github.com/SoulaymaBoukhadra30/-timesheet-devops-soulayma.git';
             }
         }
     }
