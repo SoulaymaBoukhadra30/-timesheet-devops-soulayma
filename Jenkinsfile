@@ -16,5 +16,12 @@ pipeline {
                 sh 'mvn -version'
             }
         }
+
+        stage('Build Maven') {
+            steps {
+                echo 'Building project...'
+                sh 'mvn clean install'
+            }
+        }
     }
 }
