@@ -4,18 +4,30 @@ pipeline {
     stages {
         stage('Checkout & Build') {
             steps {
-                // Récupérer le code depuis Git
                 git branch: 'master',
                     url: 'https://github.com/SoulaymaBoukhadra30/-timesheet-devops-soulayma.git'
             }
         }
 
-        stage('Testing Maven') {
+        stage('MVN CLEAN') {
             steps {
-                // Vérifier la version de Maven pour s'assurer que l'environnement est prêt
-                sh 'mvn -version'
+                sh 'mvn clean'
             }
         }
 
+        stage('MVN COMPILE') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+
+        stage('MVN SONARQUBE') {
+            steps {
+                sh 'mvn sonar:sonar \
+                    -Dsonar.host.url=http://192.168.33.10:9000 \
+                    -Dsonar.login=admin \
+                    -Dsonar.password=sonar'
+            }
         }
     }
+}
