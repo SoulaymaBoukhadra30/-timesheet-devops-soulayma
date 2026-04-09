@@ -58,20 +58,20 @@ pipeline {
                 '''
             }
         }
-        stage('KUBERNETES DEPLOY') {
-            steps {
-                sh '''
-                    kubectl apply -f k8s/pv-sql.yaml -n devops
-                    kubectl apply -f k8s/pvc-sql.yaml -n devops
-                    kubectl apply -f k8s/deploy-sql.yaml -n devops
-                    kubectl apply -f k8s/service-sql.yaml -n devops
-                    kubectl apply -f k8s/configmap-spring.yaml -n devops
-                    kubectl apply -f k8s/secret-spring.yaml -n devops
-                    kubectl apply -f k8s/deploy-spring.yaml -n devops
-                    kubectl apply -f k8s/service-spring.yaml -n devops
-                '''
-            }
-        }
+       stage('KUBERNETES DEPLOY') {
+    steps {
+        sh '''
+            kubectl apply -n devops -f k8s/pv-sql.yaml
+            kubectl apply -n devops -f k8s/pvc-sql.yaml
+            kubectl apply -n devops -f k8s/deploy-sql.yaml
+            kubectl apply -n devops -f k8s/service-sql.yaml
+            kubectl apply -n devops -f k8s/configmap-spring.yaml
+            kubectl apply -n devops -f k8s/secret-spring.yaml
+            kubectl apply -n devops -f k8s/deploy-spring.yaml
+            kubectl apply -n devops -f k8s/service-spring.yaml
+        '''
+    }
+}
     }
     post {
         success {
