@@ -53,8 +53,8 @@ pipeline {
         stage('DOCKER PUSH') {
             steps {
                 sh '''
-                    docker tag timesheet-app:latest SoulaymaBoukhadra30/timesheet-app:latest
-                    docker push SoulaymaBoukhadra30/timesheet-app:latest
+                    docker tag timesheet-app:latest soulaymaBoukhadra/timesheet-app:latest
+                    docker push soulaymaBoukhadra/timesheet-app:latest
                 '''
             }
         }
